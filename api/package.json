@@ -1,0 +1,23 @@
+{
+  "name": "petmecalapi",
+  "description": "petmecal nodejs api",
+  "keywords": [
+    "petmecal"
+  ],
+  "version": "1.0.0",
+  "private": true,
+  "author": "Kadri, Sinan, Volkan, Fatih",
+  "engines": {
+    "node": ">=5.x"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  }
+}
