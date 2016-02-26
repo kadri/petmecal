@@ -16,7 +16,7 @@ export class MyUsers {
 
   refreshUserList():void {
     if (localStorage.getItem("jwt") !== null) {
-
+    console.log(this.authHttp);
       this.authHttp.get('/api/users', { headers: contentHeaders })
         .subscribe(
         response => {

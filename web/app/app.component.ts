@@ -5,13 +5,10 @@ import {MyUserSignIn} from './user/my.user.signin';
 import {MyUserSignUp} from './user/my.user.signup';
 import {LoggedInRouterOutlet} from './common/loggedInOutlet';
 
+
 @Component({
 	selector: 'my-app',
-	// template: '<a [routerLink]="[\'Home\']">Home</a><br/>' +
-	// '<a [routerLink]="[\'MyUserSignIn\']">Signin</a><br/>' +
-	// '<a [routerLink]="[\'MyUserSignUp\']">Signup</a><br/>' +
-	// '<router-outlet></router-outlet>',
-	template: '<router-outlet></router-outlet>',
+	templateUrl: '/app/app.component.html',
 	directives: [LoggedInRouterOutlet]
 })
 

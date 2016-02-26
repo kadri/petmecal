@@ -25,8 +25,8 @@ module.exports = function(app) {
         res.header('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type, Authorization');
         next();
     });
-/* */
-    app.use('/api/*',
+    
+    app.use('/api',
         expressJwt({
             secret: process.env.JWT_SECRET || 'CgbJDpGA'
         }).unless({
@@ -34,14 +34,6 @@ module.exports = function(app) {
         })
     );
     app.use('/api', require(process.cwd() + '/api/core/router.js')());
-
-    app.use(function (req, res, next) {
-        User.find({token: req.token}, function (err, user) {
-            if (err) return next(err);
-            req.user = user;
-            next();
-        });
-    });
 
     
     // app.all("*", function (req, res) {
@@ -51,6 +43,7 @@ module.exports = function(app) {
     //     })
     // });
     app.use('/*', function(req, res){
+        console.log('GELEN ISTEK : ' + req.originalUrl);
         res.sendfile(process.cwd() + '/web/index.html');
     });
 };
