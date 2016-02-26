@@ -1,0 +1,14 @@
+<div class="grad"></div>
+<div class="header">
+    <div>Pet<span>Me</span>Cal</div><br/>
+    <div>Login</div>
+</div>
+<br>
+<form class="form-horizontal" role="form">
+    <div class="login">
+        <input type="text" #email class="form-control" id="email" name="email" placeholder="Email"><br>
+        <input type="password" #password class="form-control" id="password" name="password" placeholder="Password"><br>
+        <input type="button" value="Login" (click)="signin($event, email.value, password.value)">
+        <input type="button" value="Create PetMeCal Account" (click)="create($event)">
+    </div>
+</form>

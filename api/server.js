@@ -1,10 +1,14 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-app.use(express.static(__dirname + '/../web/'));
-app.use(bodyParser());
-app.listen(8000); 
+var app = module.exports = require('express')();
 
-app.post('/lst', function(req, res){
-	res.send('SINAN');
+require('./core/mongoose');
+require('./core/express')(app);
+
+var port = process.env.PORT || 8000;
+
+app.listen(port, function(err) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('Service is running on port: ', port);
+    }
 });
