@@ -1,6 +1,7 @@
 import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/core';
 import {Router, RouterOutlet, ComponentInstruction} from 'angular2/router';
 import {MyUserSignIn} from '../user/my.user.signin';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Directive({
   selector: 'router-outlet'
@@ -24,8 +25,8 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
     var url = instruction.urlPath;
     console.log(url);
-    if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
-      // todo: redirect to Login, may be there a better way?
+    if ((!this.publicRoutes[url] && !localStorage.getItem('jwt')) || tokenNotExpired() === false )  {
+      localStorage.removeItem('jwt');
       this.parentRouter.navigateByUrl('/signin');
     }
     return super.activate(instruction);
