@@ -10,12 +10,8 @@ import {Home} from '../home/my.home';
 	directives: [ROUTER_DIRECTIVES]
 })
 export class MyUserSignIn { 
-	//contentHeaders = null;
 
 	constructor(public http: Http, public router: Router) {
-		// this.contentHeaders = new Headers()
-		// this.contentHeaders.append('Accept', 'application/json');
-		// this.contentHeaders.append('Content-Type', 'application/json');
 	}
 	signin(event, email, password) {
 		event.preventDefault();

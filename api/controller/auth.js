@@ -13,7 +13,7 @@ exports.login = function(req, res) {
         } else {
             if (user) {
                 var userWillBeSigned = delete user.password;
-                var token = jwt.sign({email: user.email}, process.env.JWT_SECRET || 'CgbJDpGA', { expiresIn: 18000 });
+                var token = jwt.sign({email: user.email}, process.env.JWT_SECRET || 'CgbJDpGA', { ignoreExpiration : true });
                 user.token = token;
                 user.save(function(err) {
                     if (err) {
@@ -51,7 +51,7 @@ exports.register = function(req, res) {
                 data: 'Error occurred while registering user'
             })
         } else {
-            var token = jwt.sign({email: user.email}, process.env.JWT_SECRET || 'CgbJDpGA', { expiresIn: 18000 });
+            var token = jwt.sign({email: user.email}, process.env.JWT_SECRET || 'CgbJDpGA', { ignoreExpiration : true });
             res.json({
                 success: true,
                 data: token

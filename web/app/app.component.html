@@ -1,5 +1,12 @@
 <div class="grad"></div>
 <div class="headerP">
-    <div>Pet<span>Me</span>Cal</div>
+    <div>Pet<span>Me</span>Cal
+
+    <a [routerLink]="['./Home']">Home</a>
+    <a [routerLink]="['./Animals']">Animals</a>
+    <a [routerLink]="['./Definitions']">Settings</a>
+
+
+    <a class="logout" *ngIf="isLoggedin()" (click)="logout()">Logout</a></div>
 </div>
 <router-outlet></router-outlet>

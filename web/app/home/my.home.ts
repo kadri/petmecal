@@ -23,8 +23,5 @@ export class Home {
 		this.jwt = localStorage.getItem('jwt');
 	}
 
-	logout(event) {
-		localStorage.removeItem('jwt');
-		this.router.parent.navigateByUrl('/signin');
-	}
+
 }

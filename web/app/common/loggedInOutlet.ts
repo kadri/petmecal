@@ -22,10 +22,10 @@ export class LoggedInRouterOutlet extends RouterOutlet {
   }
 
   activate(instruction: ComponentInstruction) {
-
     var url = instruction.urlPath;
     console.log(url);
-    if ((!this.publicRoutes[url] && !localStorage.getItem('jwt')) || tokenNotExpired() === false )  {
+    if (!this.publicRoutes[url] && !localStorage.getItem('jwt')){
+      console.log('The token has expired!')
       localStorage.removeItem('jwt');
       this.parentRouter.navigateByUrl('/signin');
     }

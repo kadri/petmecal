@@ -4,21 +4,37 @@ import {Home} from './home/my.home';
 import {MyUserSignIn} from './user/my.user.signin';
 import {MyUserSignUp} from './user/my.user.signup';
 import {LoggedInRouterOutlet} from './common/loggedInOutlet';
-
+import {MyAnimals} from './animals/my.animals';
+import {MyVaccinations} from './definitions/my.vaccinations';
+import {MyDefinitions} from './definitions/my.definitions';
 
 @Component({
 	selector: 'my-app',
 	templateUrl: '/app/app.component.html',
-	directives: [LoggedInRouterOutlet]
+	directives: [ROUTER_DIRECTIVES, LoggedInRouterOutlet]
 })
 
 @RouteConfig([
 	{ path: '/', redirectTo: ['/Home']},
-	{ path: '/home', name: 'Home', component: Home},
-	{ path: '/signin', name: 'MyUserSignIn', component: MyUserSignIn },
-	{ path: '/signup', name: 'MyUserSignUp', component: MyUserSignUp }
+	{ path: '/home', as: 'Home', component: Home},
+	{ path: '/signin', as: 'Signin', component: MyUserSignIn },
+	{ path: '/signup', as: 'Signup', component: MyUserSignUp },
+	{ path: '/animals', as: 'Animals', component: MyAnimals },
+	{ path: '/definitions', as: 'Definitions', component: MyDefinitions }
 	])
 export class AppComponent {
 	constructor(public router: Router) {
+	}
+
+	logout() {
+		console.log('logout');
+		localStorage.removeItem('jwt');
+		this.router.navigateByUrl('/signin');
+	}
+	isLoggedin() {
+		if (localStorage.getItem('jwt'))
+			return true;
+		else
+			return false;
 	}
 }

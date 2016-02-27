@@ -26,7 +26,6 @@ export class MyUserSignUp {
         this.router.parent.navigateByUrl('/home');
       },
       error => {
-        //alert(error.text());
         console.log(error);
       }
       );
